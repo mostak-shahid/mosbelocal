@@ -127,6 +127,13 @@ function mosbelocal_plugins_management() {
 			'force_activation'	=> false, 
 		),
 		array(
+			'name'				=> 'Mos CSV Import/Export', 
+			'slug'				=> 'mos-csv-import-export', 
+			'source'			=> 'https://github.com/mostak-shahid/mos-csv-import-export/archive/master.zip', 
+			'required'			=> false,
+			'force_activation'	=> false, 
+		),
+		array(
 			'name'				=> 'Accelerated Mobile Pages', 
 			'slug'				=> 'accelerated-mobile-pages', 
 			'source'			=> get_template_directory_uri() . '/plugins/accelerated-mobile-pages.zip', 

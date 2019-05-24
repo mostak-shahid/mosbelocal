@@ -25,32 +25,66 @@
     </div>
 <?php endif; ?>
 	<header id="main-header">
-		<nav class="navbar navbar-expand-md navbar-light navbar-custom-bg">			
-			<a class="navbar-brand d-md-none d-lg-none" href="#">
-				<?php if (has_site_icon()) : ?>
-					<img class="img-responsive img-fluid" src="<?php echo get_site_icon_url(32)?>" alt="Logo">
-				<?php else : ?>
-					<?php echo bloginfo( 'name' ); ?>
-				<?php endif; ?>
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<?php
-			wp_nav_menu([
-				'menu'            => 'mainmenu',
-				'theme_location'  => 'mainmenu',
-				'container'       => 'div',
-				'container_id'    => 'collapsibleNavbar',
-				'container_class' => 'collapse navbar-collapse',
-				'menu_id'         => false,
-				'menu_class'      => 'navbar-nav ml-auto',
-				'depth'           => 2,
-				'fallback_cb'     => 'bs4navwalker::fallback',
-				//'walker'          => new bs4navwalker()
-				]);
-			?>
-		</nav>
+		<div class="sticky_top">
+			<div class="d-block d-lg-none">
+				<div class="small-logo text-center"><?php echo do_shortcode( '[site-identity]' ) ?></div>
+				<div class="small-nav text-center">
+					<span class="menu-activator"></span>
+					<?php
+					wp_nav_menu([
+						'menu'            => 'mobilemenu',
+						'theme_location'  => 'mobilemenu',
+						// 'container'       => 'nav',
+						// 'container_id'    => 'main-menu',
+						// 'container_class' => 'd-flex justify-content-center',
+						// 'menu_id'         => false,
+						// 'menu_class'      => 'main-menu',
+						// 'depth'           => 2,
+						// 'fallback_cb'     => 'bs4navwalker::fallback',
+						// 'walker'          => new bs4navwalker()
+						]);
+					?>
+				</div>
+			</div>
+			<div class="d-none d-lg-block">
+				<div class="content-wrap">
+					<div class="container-fluid">
+						<div class="row justify-content-center">
+							<div class="col-xl-10">
+								<div class="row">
+									<div class="col-lg-6 col-xl-2">
+										<?php echo do_shortcode( '[site-identity]' ) ?>
+									</div>
+									<div class="col-lg-6 col-xl-2 order-xl-last text-right">
+										<div class="call-wrap">
+											<img src="<?php echo get_template_directory_uri() ?>/images/header-phone-icon.png" alt="<?php echo $mosbelocal_options['misc-img-alt'][0] ?> | Phone" class="img-icon" width="18" height="17">
+											<?php echo do_shortcode( '[phone index=1]' ) ?>
+											
+										</div>
+									</div>
+									<div class="col-lg-12 col-xl-8 text-center">
+										<?php
+										wp_nav_menu([
+											'menu'            => 'mainmenu',
+											'theme_location'  => 'mainmenu',
+											'container'       => 'nav',
+											'container_id'    => 'main-menu',
+											'container_class' => 'd-flex justify-content-center',
+											'menu_id'         => false,
+											'menu_class'      => 'main-menu',
+											'depth'           => 2,
+											//'fallback_cb'     => 'bs4navwalker::fallback',
+											//'walker'          => new bs4navwalker()
+											]);
+										?>
+									</div>					
+								</div>
+							</div>
+						</div>				
+					</div>
+				</div>			
+			</div>
+		</div>
 	</header>
 	<?php if (!is_front_page()) : ?>
 		<section id="page-title" <?php if(@$mosbelocal_options['sections-title-background-type'] == 1) echo 'class="'.@$mosbelocal_options['sections-title-background'].'"';?>>

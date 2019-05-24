@@ -1,6 +1,8 @@
 <?php
 show_admin_bar( false );
 require_once('functions/theme-functions.php');
+require_once('functions/post-types.php');
+require_once('functions/taxonomy.php');
 require_once('functions/scripts.php');
 require_once('functions/setup.php');
 require_once('functions/shortcodes.php');

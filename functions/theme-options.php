@@ -333,8 +333,17 @@
                 'subtitle' => 'You can add multiple drop areas or columns.',
                 'compiler' => 'true',
                 'options'  => array(
-                    'Enabled'  => array(),
-                    'Disabled' => array(),
+                    'Enabled'  => array(
+                    ),
+                    'Disabled' => array(
+                        'contact' => 'Form Section',
+                        'service' => 'Services Section',
+                        'about' => 'About Section',
+                        'product' => 'Product Section',
+                        'testimonial' => 'Testimonial Section',
+                        'blog' => 'Blog Section',
+                        'partner' => 'Partner Section',
+                    )
                 ),
             ),
         )
@@ -377,7 +386,15 @@
                 'compiler' => 'true',
                 'options'  => array(
                     'Enabled'  => array(),
-                    'Disabled' => array(),
+                    'Disabled' => array(
+                        'contact' => 'Form Section',
+                        'service' => 'Services Section',
+                        'about' => 'About Section',
+                        'product' => 'Product Section',
+                        'testimonial' => 'Testimonial Section',
+                        'blog' => 'Blog Section',
+                        'partner' => 'Partner Section',
+                    )
                 ),
             ),
         )
@@ -402,7 +419,14 @@
                     'Enabled'  => array(
                     ),
                     'Disabled' => array(
-                        'banner' => 'Banner',
+                        'banner' => 'Banner Section',
+                        'contact' => 'Form Section',
+                        'service' => 'Services Section',
+                        'about' => 'About Section',
+                        'product' => 'Product Section',
+                        'testimonial' => 'Testimonial Section',
+                        'blog' => 'Blog Section',
+                        'partner' => 'Partner Section',
                     )
                 ),
             ),
@@ -582,6 +606,54 @@
                 'default'  => 1,
                 'on'       => 'Enabled',
                 'off'      => 'Disabled',
+            ),
+        )
+    ) );
+    //Alt Tag
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Alt Tag', 'redux-framework-demo' ),
+        'id'               => 'misc-alt',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'       => 'misc-img-alt',
+                'type'     => 'multi_text',
+                'title'    => __( 'Image Alt Tag', 'redux-framework-demo' ),
+            ),
+        )
+    ) );
+    //Form Setup
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Form Setup', 'redux-framework-demo' ),
+        'id'               => 'misc-form',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'       => 'misc-form-recipient',
+                'type'     => 'multi_text',
+                'title'    => __( 'Digital Marketing Recipient', 'redux-framework-demo' ),
+                'desc'     => 'First Add Name then email address Example: Hasan Ahmed Jobayer, jobayer@belocal.today'
+            ),
+            array(
+                'id'       => 'misc-form-subject',
+                'type'     => 'editor',
+                'title'    => __( 'Digital Marketing Subject', 'redux-framework-demo' ),
+            ),
+            array(
+                'id'       => 'misc-form-email',
+                'type'     => 'editor',
+                'title'    => __( 'Digital Marketing Email Text', 'redux-framework-demo' ),
+            ),
+            array(
+                'id'       => 'misc-form-body',
+                'type'     => 'editor',
+                'title'    => __( 'Digital Marketing Email Body Text', 'redux-framework-demo' ),
             ),
         )
     ) );
@@ -978,10 +1050,859 @@
             ),
         )
     ) ); 
-
-    //Blank
+    //Form Section
     Redux::setSection( $opt_name, array(
-        'title'            => __( 'Blank', 'redux-framework-demo' ),
+        'title'            => __( 'Form Section', 'redux-framework-demo' ),
+        'id'               => 'sections-contact',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'             => 'sections-contact-padding',
+                'type'           => 'spacing',
+                'mode'           => 'padding',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-contact .content-wrap' ),
+                'title'          => __( 'Section Padding', 'redux-framework-demo' ),
+            ),  
+            array(
+                'id'             => 'sections-contact-margin',
+                'type'           => 'spacing',
+                'mode'           => 'margin',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-contact .content-wrap' ),
+                'title'          => __( 'Section Margin', 'redux-framework-demo' ),
+            ),        
+            array(
+                'id'       => 'sections-contact-border',
+                'type'     => 'border',
+                'title'    => __( 'Section Border', 'redux-framework-demo' ),
+                'output'   => array( '#section-contact .content-wrap' ),
+                'all'      => false,
+            ),
+            array(
+                'id'       => 'sections-contact-title',
+                'type'     => 'text',
+                'title'    => __( 'Section Title', 'redux-framework-demo' ),
+                'desc'     => 'You can use span tag ( &lt;span&gt;&lt;/span&gt;, &lt;strong&gt;&lt;/strong&gt;, &lt;em&gt;&lt;/em&gt;, &lt;br /&gt;) here.',
+                'validate'     => 'html_custom',
+                'allowed_html' => array(
+                    'br'     => array(),
+                    'em'     => array(),
+                    'strong' => array(),
+                    
+                    'span' => array(
+                        'id' => array(),
+                        'class' => array()
+                    )
+                )
+            ),
+            array(
+                'id'      => 'sections-contact-content',
+                'type'    => 'editor',
+                'title'   => __( 'Section Content', 'redux-framework-demo' ),
+                'args'    => array(
+                    'wpautop'       => false,
+                    'media_buttons' => false,
+                    'textarea_rows' => 5,
+                    //'tabindex' => 1,
+                    //'editor_css' => '',
+                    'teeny'         => false,
+                    //'tinymce' => array(),
+                    //'quicktags'     => false,
+                )
+            ),
+            array(
+                'id'       => 'sections-contact-background-type',
+                'type'     => 'button_set',
+                'title'    => __( 'Breadcrumbs Background Type', 'redux-framework-demo' ),
+                'options'  => array(
+                    '1' => 'Default Colors',
+                    '2' => 'Custom Colors'
+                ),
+                'default'  => '1',
+            ),
+            array(
+                'id'       => 'sections-contact-background',
+                'type'     => 'select',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                //Must provide key => value pairs for select options
+                'options'  => array(
+                    'bg-primary text-white' => 'Primary Background',
+                    'bg-secondary text-white' => 'Secondary Background',
+                    'bg-success text-white' => 'Success Background',
+                    'bg-danger text-white' => 'Danger Background',
+                    'bg-warning text-white' => 'Warning Background',
+                    'bg-info text-white' => 'Info Background',
+                    'bg-light text-dark' => 'Light Background',
+                    'bg-dark text-white' => 'Dark Background',
+                    'bg-white text-dark' => 'White Background',
+                    'bg-transparent text-dark' => 'Transparent Background',
+                ),
+                'default'  => 'bg-dark text-white',
+                'required' => array( 'sections-contact-background-type', '=', '1' ),
+            ),
+            array(
+                'id'       => 'sections-contact-background-rgba',
+                'type'     => 'color_rgba',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                'validate' => 'colorrgba',
+                'required' => array( 'sections-contact-background-type', '=', '2' ),
+                'output'         => array( '#section-contact' ),
+                'mode'     => 'background',
+                'validate' => 'colorrgba',
+            ),
+        )
+    ) ); 
+    //Service Section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Service Section', 'redux-framework-demo' ),
+        'id'               => 'sections-service',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'             => 'sections-service-padding',
+                'type'           => 'spacing',
+                'mode'           => 'padding',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-service .content-wrap' ),
+                'title'          => __( 'Section Padding', 'redux-framework-demo' ),
+            ),  
+            array(
+                'id'             => 'sections-service-margin',
+                'type'           => 'spacing',
+                'mode'           => 'margin',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-service .content-wrap' ),
+                'title'          => __( 'Section Margin', 'redux-framework-demo' ),
+            ),        
+            array(
+                'id'       => 'sections-service-border',
+                'type'     => 'border',
+                'title'    => __( 'Section Border', 'redux-framework-demo' ),
+                'output'   => array( '#section-service .content-wrap' ),
+                'all'      => false,
+            ),
+            array(
+                'id'       => 'sections-service-title',
+                'type'     => 'text',
+                'title'    => __( 'Section Title', 'redux-framework-demo' ),
+                'desc'     => 'You can use span tag ( &lt;span&gt;&lt;/span&gt;, &lt;strong&gt;&lt;/strong&gt;, &lt;em&gt;&lt;/em&gt;, &lt;br /&gt;) here.',
+                'validate'     => 'html_custom',
+                'allowed_html' => array(
+                    'br'     => array(),
+                    'em'     => array(),
+                    'strong' => array(),
+                    
+                    'span' => array(
+                        'id' => array(),
+                        'class' => array()
+                    )
+                )
+            ),
+            array(
+                'id'      => 'sections-service-content',
+                'type'    => 'editor',
+                'title'   => __( 'Section Content', 'redux-framework-demo' ),
+                'args'    => array(
+                    'wpautop'       => false,
+                    'media_buttons' => false,
+                    'textarea_rows' => 5,
+                    //'tabindex' => 1,
+                    //'editor_css' => '',
+                    'teeny'         => false,
+                    //'tinymce' => array(),
+                    //'quicktags'     => false,
+                )
+            ),
+            array(
+                'id'          => 'sections-service-slides',
+                'type'        => 'mos_service_slides',
+                'title'       => __( 'Section Details', 'redux-framework-demo' ),              
+                'show' => array(
+                    'title' => true,
+                    'description' => true,
+                    'link_title' => true,
+                    'link_url' => true,
+                    'target' => true,
+                ),
+                'placeholder' => array(
+                    'title'       => __( 'This is a title', 'redux-framework-demo' ),
+                    'description' => __( 'Description Here', 'redux-framework-demo' ),
+                    'link_title'         => __( 'Date', 'redux-framework-demo' ),
+                    'link_url'         => __( 'Give us a link!', 'redux-framework-demo' ),
+                )
+            ),
+            array(
+                'id'       => 'sections-service-background-type',
+                'type'     => 'button_set',
+                'title'    => __( 'Breadcrumbs Background Type', 'redux-framework-demo' ),
+                'options'  => array(
+                    '1' => 'Default Colors',
+                    '2' => 'Custom Colors'
+                ),
+                'default'  => '1',
+            ),
+            array(
+                'id'       => 'sections-service-background',
+                'type'     => 'select',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                //Must provide key => value pairs for select options
+                'options'  => array(
+                    'bg-primary text-white' => 'Primary Background',
+                    'bg-secondary text-white' => 'Secondary Background',
+                    'bg-success text-white' => 'Success Background',
+                    'bg-danger text-white' => 'Danger Background',
+                    'bg-warning text-white' => 'Warning Background',
+                    'bg-info text-white' => 'Info Background',
+                    'bg-light text-dark' => 'Light Background',
+                    'bg-dark text-white' => 'Dark Background',
+                    'bg-white text-dark' => 'White Background',
+                    'bg-transparent text-dark' => 'Transparent Background',
+                ),
+                'default'  => 'bg-dark text-white',
+                'required' => array( 'sections-service-background-type', '=', '1' ),
+            ),
+            array(
+                'id'       => 'sections-service-background-rgba',
+                'type'     => 'color_rgba',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                'validate' => 'colorrgba',
+                'required' => array( 'sections-service-background-type', '=', '2' ),
+                'output'         => array( '#section-service' ),
+                'mode'     => 'background',
+                'validate' => 'colorrgba',
+            ),
+        )
+    ) ); 
+    //About Section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'About Section', 'redux-framework-demo' ),
+        'id'               => 'sections-about',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'             => 'sections-about-padding',
+                'type'           => 'spacing',
+                'mode'           => 'padding',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-about .content-wrap' ),
+                'title'          => __( 'Section Padding', 'redux-framework-demo' ),
+            ),  
+            array(
+                'id'             => 'sections-about-margin',
+                'type'           => 'spacing',
+                'mode'           => 'margin',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-about .content-wrap' ),
+                'title'          => __( 'Section Margin', 'redux-framework-demo' ),
+            ),        
+            array(
+                'id'       => 'sections-about-border',
+                'type'     => 'border',
+                'title'    => __( 'Section Border', 'redux-framework-demo' ),
+                'output'   => array( '#section-about .content-wrap' ),
+                'all'      => false,
+            ),
+            array(
+                'id'       => 'sections-about-title',
+                'type'     => 'text',
+                'title'    => __( 'Section Title', 'redux-framework-demo' ),
+                'desc'     => 'You can use span tag ( &lt;span&gt;&lt;/span&gt;, &lt;strong&gt;&lt;/strong&gt;, &lt;em&gt;&lt;/em&gt;, &lt;br /&gt;) here.',
+                'validate'     => 'html_custom',
+                'allowed_html' => array(
+                    'br'     => array(),
+                    'em'     => array(),
+                    'strong' => array(),
+                    
+                    'span' => array(
+                        'id' => array(),
+                        'class' => array()
+                    )
+                )
+            ),
+            array(
+                'id'      => 'sections-about-content',
+                'type'    => 'editor',
+                'title'   => __( 'Section Content', 'redux-framework-demo' ),
+                'args'    => array(
+                    'wpautop'       => false,
+                    'media_buttons' => false,
+                    'textarea_rows' => 5,
+                    //'tabindex' => 1,
+                    //'editor_css' => '',
+                    'teeny'         => false,
+                    //'tinymce' => array(),
+                    //'quicktags'     => false,
+                )
+            ),
+            array(
+                'id'          => 'sections-about-slides',
+                'type'        => 'mos_slides',
+                'title'       => __( 'Section Details', 'redux-framework-demo' ),              
+                'show' => array(
+                    'title' => true,
+                    'description' => true,
+                    'link_title' => true,
+                    'link_url' => false,
+                    'target' => false,
+                ),
+                'placeholder' => array(
+                    'title'       => __( 'This is a title', 'redux-framework-demo' ),
+                    'description' => __( 'Description Here', 'redux-framework-demo' ),
+                    'link_title'         => __( 'Slug', 'redux-framework-demo' ),
+                    'link_url'         => __( 'Give us a link!', 'redux-framework-demo' ),
+                )
+            ),
+            array(
+                'id'       => 'sections-about-media',
+                'type'     => 'media',
+                'url'      => true,
+                'title'    => __( 'Section Image', 'redux-framework-demo' ),
+                'compiler' => 'true',
+            ),
+            array(
+                'id'       => 'sections-about-background-type',
+                'type'     => 'button_set',
+                'title'    => __( 'Breadcrumbs Background Type', 'redux-framework-demo' ),
+                'options'  => array(
+                    '1' => 'Default Colors',
+                    '2' => 'Custom Colors'
+                ),
+                'default'  => '1',
+            ),
+            array(
+                'id'       => 'sections-about-background',
+                'type'     => 'select',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                //Must provide key => value pairs for select options
+                'options'  => array(
+                    'bg-primary text-white' => 'Primary Background',
+                    'bg-secondary text-white' => 'Secondary Background',
+                    'bg-success text-white' => 'Success Background',
+                    'bg-danger text-white' => 'Danger Background',
+                    'bg-warning text-white' => 'Warning Background',
+                    'bg-info text-white' => 'Info Background',
+                    'bg-light text-dark' => 'Light Background',
+                    'bg-dark text-white' => 'Dark Background',
+                    'bg-white text-dark' => 'White Background',
+                    'bg-transparent text-dark' => 'Transparent Background',
+                ),
+                'default'  => 'bg-dark text-white',
+                'required' => array( 'sections-about-background-type', '=', '1' ),
+            ),
+            array(
+                'id'       => 'sections-about-background-rgba',
+                'type'     => 'color_rgba',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                'validate' => 'colorrgba',
+                'required' => array( 'sections-about-background-type', '=', '2' ),
+                'output'         => array( '#section-about' ),
+                'mode'     => 'background',
+                'validate' => 'colorrgba',
+            ),
+        )
+    ) ); 
+    //Product Section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Product Section', 'redux-framework-demo' ),
+        'id'               => 'sections-product',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'             => 'sections-product-padding',
+                'type'           => 'spacing',
+                'mode'           => 'padding',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-product .content-wrap' ),
+                'title'          => __( 'Section Padding', 'redux-framework-demo' ),
+            ),  
+            array(
+                'id'             => 'sections-product-margin',
+                'type'           => 'spacing',
+                'mode'           => 'margin',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-product .content-wrap' ),
+                'title'          => __( 'Section Margin', 'redux-framework-demo' ),
+            ),        
+            array(
+                'id'       => 'sections-product-border',
+                'type'     => 'border',
+                'title'    => __( 'Section Border', 'redux-framework-demo' ),
+                'output'   => array( '#section-product .content-wrap' ),
+                'all'      => false,
+            ),
+            array(
+                'id'       => 'sections-product-title',
+                'type'     => 'text',
+                'title'    => __( 'Section Title', 'redux-framework-demo' ),
+                'desc'     => 'You can use span tag ( &lt;span&gt;&lt;/span&gt;, &lt;strong&gt;&lt;/strong&gt;, &lt;em&gt;&lt;/em&gt;, &lt;br /&gt;) here.',
+                'validate'     => 'html_custom',
+                'allowed_html' => array(
+                    'br'     => array(),
+                    'em'     => array(),
+                    'strong' => array(),
+                    
+                    'span' => array(
+                        'id' => array(),
+                        'class' => array()
+                    )
+                )
+            ),
+            array(
+                'id'      => 'sections-product-content',
+                'type'    => 'editor',
+                'title'   => __( 'Section Content', 'redux-framework-demo' ),
+                'args'    => array(
+                    'wpautop'       => false,
+                    'media_buttons' => false,
+                    'textarea_rows' => 5,
+                    //'tabindex' => 1,
+                    //'editor_css' => '',
+                    'teeny'         => false,
+                    //'tinymce' => array(),
+                    //'quicktags'     => false,
+                )
+            ),
+            array(
+                'id'          => 'sections-product-slides',
+                'type'        => 'mos_slides',
+                'title'       => __( 'Section Details', 'redux-framework-demo' ),              
+                'show' => array(
+                    'title' => true,
+                    'description' => true,
+                    'link_title' => true,
+                    'link_url' => true,
+                    'target' => true,
+                ),
+                'placeholder' => array(
+                    'title'       => __( 'This is a title', 'redux-framework-demo' ),
+                    'description' => __( 'Description Here', 'redux-framework-demo' ),
+                    'link_title'         => __( 'Link Title', 'redux-framework-demo' ),
+                    'link_url'         => __( 'Give us a link!', 'redux-framework-demo' ),
+                )
+            ),
+            array(
+                'id'       => 'sections-product-background-type',
+                'type'     => 'button_set',
+                'title'    => __( 'Breadcrumbs Background Type', 'redux-framework-demo' ),
+                'options'  => array(
+                    '1' => 'Default Colors',
+                    '2' => 'Custom Colors'
+                ),
+                'default'  => '1',
+            ),
+            array(
+                'id'       => 'sections-product-background',
+                'type'     => 'select',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                //Must provide key => value pairs for select options
+                'options'  => array(
+                    'bg-primary text-white' => 'Primary Background',
+                    'bg-secondary text-white' => 'Secondary Background',
+                    'bg-success text-white' => 'Success Background',
+                    'bg-danger text-white' => 'Danger Background',
+                    'bg-warning text-white' => 'Warning Background',
+                    'bg-info text-white' => 'Info Background',
+                    'bg-light text-dark' => 'Light Background',
+                    'bg-dark text-white' => 'Dark Background',
+                    'bg-white text-dark' => 'White Background',
+                    'bg-transparent text-dark' => 'Transparent Background',
+                ),
+                'default'  => 'bg-dark text-white',
+                'required' => array( 'sections-product-background-type', '=', '1' ),
+            ),
+            array(
+                'id'       => 'sections-product-background-rgba',
+                'type'     => 'color_rgba',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                'validate' => 'colorrgba',
+                'required' => array( 'sections-product-background-type', '=', '2' ),
+                'output'         => array( '#section-product' ),
+                'mode'     => 'background',
+                'validate' => 'colorrgba',
+            ),
+        )
+    ) ); 
+    //Testimonial Section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Testimonial Section', 'redux-framework-demo' ),
+        'id'               => 'sections-testimonial',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'             => 'sections-testimonial-padding',
+                'type'           => 'spacing',
+                'mode'           => 'padding',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-testimonial .content-wrap' ),
+                'title'          => __( 'Section Padding', 'redux-framework-demo' ),
+            ),  
+            array(
+                'id'             => 'sections-testimonial-margin',
+                'type'           => 'spacing',
+                'mode'           => 'margin',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-testimonial .content-wrap' ),
+                'title'          => __( 'Section Margin', 'redux-framework-demo' ),
+            ),        
+            array(
+                'id'       => 'sections-testimonial-border',
+                'type'     => 'border',
+                'title'    => __( 'Section Border', 'redux-framework-demo' ),
+                'output'   => array( '#section-testimonial .content-wrap' ),
+                'all'      => false,
+            ),
+            array(
+                'id'       => 'sections-testimonial-title',
+                'type'     => 'text',
+                'title'    => __( 'Section Title', 'redux-framework-demo' ),
+                'desc'     => 'You can use span tag ( &lt;span&gt;&lt;/span&gt;, &lt;strong&gt;&lt;/strong&gt;, &lt;em&gt;&lt;/em&gt;, &lt;br /&gt;) here.',
+                'validate'     => 'html_custom',
+                'allowed_html' => array(
+                    'br'     => array(),
+                    'em'     => array(),
+                    'strong' => array(),
+                    
+                    'span' => array(
+                        'id' => array(),
+                        'class' => array()
+                    )
+                )
+            ),
+            array(
+                'id'      => 'sections-testimonial-content',
+                'type'    => 'editor',
+                'title'   => __( 'Section Content', 'redux-framework-demo' ),
+                'args'    => array(
+                    'wpautop'       => false,
+                    'media_buttons' => false,
+                    'textarea_rows' => 5,
+                    //'tabindex' => 1,
+                    //'editor_css' => '',
+                    'teeny'         => false,
+                    //'tinymce' => array(),
+                    //'quicktags'     => false,
+                )
+            ),
+            array(
+                'id'       => 'sections-testimonial-background-type',
+                'type'     => 'button_set',
+                'title'    => __( 'Breadcrumbs Background Type', 'redux-framework-demo' ),
+                'options'  => array(
+                    '1' => 'Default Colors',
+                    '2' => 'Custom Colors'
+                ),
+                'default'  => '1',
+            ),
+            array(
+                'id'       => 'sections-testimonial-background',
+                'type'     => 'select',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                //Must provide key => value pairs for select options
+                'options'  => array(
+                    'bg-primary text-white' => 'Primary Background',
+                    'bg-secondary text-white' => 'Secondary Background',
+                    'bg-success text-white' => 'Success Background',
+                    'bg-danger text-white' => 'Danger Background',
+                    'bg-warning text-white' => 'Warning Background',
+                    'bg-info text-white' => 'Info Background',
+                    'bg-light text-dark' => 'Light Background',
+                    'bg-dark text-white' => 'Dark Background',
+                    'bg-white text-dark' => 'White Background',
+                    'bg-transparent text-dark' => 'Transparent Background',
+                ),
+                'default'  => 'bg-dark text-white',
+                'required' => array( 'sections-testimonial-background-type', '=', '1' ),
+            ),
+            array(
+                'id'       => 'sections-testimonial-background-rgba',
+                'type'     => 'color_rgba',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                'validate' => 'colorrgba',
+                'required' => array( 'sections-testimonial-background-type', '=', '2' ),
+                'output'         => array( '#section-testimonial' ),
+                'mode'     => 'background',
+                'validate' => 'colorrgba',
+            ),
+        )
+    ) ); 
+    //Blog Section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Blog Section', 'redux-framework-demo' ),
+        'id'               => 'sections-blog',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'             => 'sections-blog-padding',
+                'type'           => 'spacing',
+                'mode'           => 'padding',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-blog .content-wrap' ),
+                'title'          => __( 'Section Padding', 'redux-framework-demo' ),
+            ),  
+            array(
+                'id'             => 'sections-blog-margin',
+                'type'           => 'spacing',
+                'mode'           => 'margin',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-blog .content-wrap' ),
+                'title'          => __( 'Section Margin', 'redux-framework-demo' ),
+            ),        
+            array(
+                'id'       => 'sections-blog-border',
+                'type'     => 'border',
+                'title'    => __( 'Section Border', 'redux-framework-demo' ),
+                'output'   => array( '#section-blog .content-wrap' ),
+                'all'      => false,
+            ),
+            array(
+                'id'       => 'sections-blog-title',
+                'type'     => 'text',
+                'title'    => __( 'Section Title', 'redux-framework-demo' ),
+                'desc'     => 'You can use span tag ( &lt;span&gt;&lt;/span&gt;, &lt;strong&gt;&lt;/strong&gt;, &lt;em&gt;&lt;/em&gt;, &lt;br /&gt;) here.',
+                'validate'     => 'html_custom',
+                'allowed_html' => array(
+                    'br'     => array(),
+                    'em'     => array(),
+                    'strong' => array(),
+                    
+                    'span' => array(
+                        'id' => array(),
+                        'class' => array()
+                    )
+                )
+            ),
+            array(
+                'id'      => 'sections-blog-content',
+                'type'    => 'editor',
+                'title'   => __( 'Section Content', 'redux-framework-demo' ),
+                'args'    => array(
+                    'wpautop'       => false,
+                    'media_buttons' => false,
+                    'textarea_rows' => 5,
+                    //'tabindex' => 1,
+                    //'editor_css' => '',
+                    'teeny'         => false,
+                    //'tinymce' => array(),
+                    //'quicktags'     => false,
+                )
+            ),
+            array(
+                'id'       => 'sections-blog-background-type',
+                'type'     => 'button_set',
+                'title'    => __( 'Breadcrumbs Background Type', 'redux-framework-demo' ),
+                'options'  => array(
+                    '1' => 'Default Colors',
+                    '2' => 'Custom Colors'
+                ),
+                'default'  => '1',
+            ),
+            array(
+                'id'       => 'sections-blog-background',
+                'type'     => 'select',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                //Must provide key => value pairs for select options
+                'options'  => array(
+                    'bg-primary text-white' => 'Primary Background',
+                    'bg-secondary text-white' => 'Secondary Background',
+                    'bg-success text-white' => 'Success Background',
+                    'bg-danger text-white' => 'Danger Background',
+                    'bg-warning text-white' => 'Warning Background',
+                    'bg-info text-white' => 'Info Background',
+                    'bg-light text-dark' => 'Light Background',
+                    'bg-dark text-white' => 'Dark Background',
+                    'bg-white text-dark' => 'White Background',
+                    'bg-transparent text-dark' => 'Transparent Background',
+                ),
+                'default'  => 'bg-dark text-white',
+                'required' => array( 'sections-blog-background-type', '=', '1' ),
+            ),
+            array(
+                'id'       => 'sections-blog-background-rgba',
+                'type'     => 'color_rgba',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                'validate' => 'colorrgba',
+                'required' => array( 'sections-blog-background-type', '=', '2' ),
+                'output'         => array( '#section-blog' ),
+                'mode'     => 'background',
+                'validate' => 'colorrgba',
+            ),
+        )
+    ) ); 
+    //Partner Section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Partner Section', 'redux-framework-demo' ),
+        'id'               => 'sections-partner',
+        'subsection'       => true,
+        'desc'             => '',
+        'customizer_width' => '450px',
+        'icon'             => 'el el-move',
+        'fields'     => array(
+            array(
+                'id'             => 'sections-partner-padding',
+                'type'           => 'spacing',
+                'mode'           => 'padding',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-partner .content-wrap' ),
+                'title'          => __( 'Section Padding', 'redux-framework-demo' ),
+            ),  
+            array(
+                'id'             => 'sections-partner-margin',
+                'type'           => 'spacing',
+                'mode'           => 'margin',
+                'all'            => false,
+                'units'          => array( 'em', 'px', '%', 'vw', 'vh' ),
+                'units_extended' => 'true',
+                'output'         => array( '#section-partner .content-wrap' ),
+                'title'          => __( 'Section Margin', 'redux-framework-demo' ),
+            ),        
+            array(
+                'id'       => 'sections-partner-border',
+                'type'     => 'border',
+                'title'    => __( 'Section Border', 'redux-framework-demo' ),
+                'output'   => array( '#section-partner .content-wrap' ),
+                'all'      => false,
+            ),
+            array(
+                'id'       => 'sections-partner-title',
+                'type'     => 'text',
+                'title'    => __( 'Section Title', 'redux-framework-demo' ),
+                'desc'     => 'You can use span tag ( &lt;span&gt;&lt;/span&gt;, &lt;strong&gt;&lt;/strong&gt;, &lt;em&gt;&lt;/em&gt;, &lt;br /&gt;) here.',
+                'validate'     => 'html_custom',
+                'allowed_html' => array(
+                    'br'     => array(),
+                    'em'     => array(),
+                    'strong' => array(),
+                    
+                    'span' => array(
+                        'id' => array(),
+                        'class' => array()
+                    )
+                )
+            ),
+            array(
+                'id'      => 'sections-partner-content',
+                'type'    => 'editor',
+                'title'   => __( 'Section Content', 'redux-framework-demo' ),
+                'args'    => array(
+                    'wpautop'       => false,
+                    'media_buttons' => false,
+                    'textarea_rows' => 5,
+                    //'tabindex' => 1,
+                    //'editor_css' => '',
+                    'teeny'         => false,
+                    //'tinymce' => array(),
+                    //'quicktags'     => false,
+                )
+            ),
+            array(
+                'id'          => 'sections-partner-slides',
+                'type'        => 'mos_slides',
+                'title'       => __( 'Section Details', 'redux-framework-demo' ),              
+                'show' => array(
+                    'title' => true,
+                    'description' => false,
+                    'link_title' => false,
+                    'link_url' => true,
+                    'target' => true,
+                ),
+                'placeholder' => array(
+                    'title'       => __( 'This is a title', 'redux-framework-demo' ),
+                    'description' => __( 'Description Here', 'redux-framework-demo' ),
+                    'link_title'         => __( 'Link Title', 'redux-framework-demo' ),
+                    'link_url'         => __( 'Give us a link!', 'redux-framework-demo' ),
+                )
+            ),
+            array(
+                'id'       => 'sections-partner-background-type',
+                'type'     => 'button_set',
+                'title'    => __( 'Breadcrumbs Background Type', 'redux-framework-demo' ),
+                'options'  => array(
+                    '1' => 'Default Colors',
+                    '2' => 'Custom Colors'
+                ),
+                'default'  => '1',
+            ),
+            array(
+                'id'       => 'sections-partner-background',
+                'type'     => 'select',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                //Must provide key => value pairs for select options
+                'options'  => array(
+                    'bg-primary text-white' => 'Primary Background',
+                    'bg-secondary text-white' => 'Secondary Background',
+                    'bg-success text-white' => 'Success Background',
+                    'bg-danger text-white' => 'Danger Background',
+                    'bg-warning text-white' => 'Warning Background',
+                    'bg-info text-white' => 'Info Background',
+                    'bg-light text-dark' => 'Light Background',
+                    'bg-dark text-white' => 'Dark Background',
+                    'bg-white text-dark' => 'White Background',
+                    'bg-transparent text-dark' => 'Transparent Background',
+                ),
+                'default'  => 'bg-dark text-white',
+                'required' => array( 'sections-partner-background-type', '=', '1' ),
+            ),
+            array(
+                'id'       => 'sections-partner-background-rgba',
+                'type'     => 'color_rgba',
+                'title'    => __( 'Section Background', 'redux-framework-demo' ),
+                'validate' => 'colorrgba',
+                'required' => array( 'sections-partner-background-type', '=', '2' ),
+                'output'         => array( '#section-partner' ),
+                'mode'     => 'background',
+                'validate' => 'colorrgba',
+            ),
+        )
+    ) ); 
+
+    //Blank Section
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Blank Section', 'redux-framework-demo' ),
         'id'               => 'sections-blank',
         'subsection'       => true,
         'desc'             => '',
@@ -1290,7 +2211,6 @@
                 'title'   => __( 'Section Content', 'redux-framework-demo' ),
                 'args'    => array(
                     'wpautop'       => false,
-                    'media_buttons' => false,
                     'textarea_rows' => 5,
                     //'tabindex' => 1,
                     //'editor_css' => '',

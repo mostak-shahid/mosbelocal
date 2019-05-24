@@ -5,7 +5,8 @@ $layout = $mosbelocal_options['archive-page-layout'];
 ?><?php get_header() ?>
 <section id="archive" class="page-content <?php if(@$mosbelocal_options['sections-content-background-type'] == 1) echo @$mosbelocal_options['sections-content-background'];?>">
 	<div class="content-wrap">
-		<div class="container-fluid">
+		<div class="container">
+			<div class="content">
 		<?php if ($layout != 'ns') : ?>
 			<div class="row">
 				<div class="col-lg-8 <?php if ($layout == 'ls') echo 'order-lg-last'?>">
@@ -38,6 +39,7 @@ $layout = $mosbelocal_options['archive-page-layout'];
 				</div>
 			</div>
 			<?php endif; ?>
+			</div>
 		</div>	
 	</div>
 </section>

@@ -17,9 +17,9 @@ $layout = $mosbelocal_options['general-page-layout'];
 									<?php the_post_thumbnail('blog-image-full', array('class' => 'img-fluid img-blog img-centered'))?>
 								</div>
 							<?php endif;?>						
-							<div class="content">
+							
 								<?php get_template_part( 'content', 'page' ) ?>
-							</div>
+							
 						<?php endwhile;?>	
 
 

@@ -2,6 +2,18 @@
 function mosbelocal_metaboxes() {
     $prefix = '_mosbelocal_';
 
+    $work_details = new_cmb2_box(array(
+        'id' => $prefix . 'work_details',
+        'title' => __('Work Details', 'cmb2'),
+        'object_types' => array('work'),
+        //'show_on'      => array( 'key' => 'page-template', 'value' => 'page-template/lightbox-gallery-page.php' ),
+    )); 
+    $work_details->add_field( array(
+        'name' => 'Relavent Url',
+        'id'   => $prefix . 'work_link',
+        'type' => 'text_url',
+    ));
+
 	$post_gallery_details = new_cmb2_box(array(
         'id' => $prefix . 'post_gallery_details',
         'title' => __('Gallery Details', 'cmb2'),
